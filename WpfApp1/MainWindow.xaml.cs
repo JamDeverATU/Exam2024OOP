@@ -50,18 +50,6 @@ namespace WpfApp1
             ReturnBookings(); // Call method to update bookings for the new selected date
         }
 
-        // Event handler for the Search Customer button click event
-        private void SearchCustomerButton1_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                CustomerSearchResults newWindow = new CustomerSearchResults();
-                newWindow.Show();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
+        
     }
 }
