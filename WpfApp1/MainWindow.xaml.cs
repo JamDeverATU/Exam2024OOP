@@ -1,33 +1,52 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace WpfApp1
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
             InitializeComponent();
+            ReturnBookings();
         }
 
-        private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void ReturnBookings()
         {
+            using (var db = new RestaurantData("OODExam_JamesMcaffertyDevers"))
+            {
+                // Get the selected date from the DatePicker
+                DateTime selectedDate = BookingDatePicker.SelectedDate ?? DateTime.Now.Date;
 
+                // Filter bookings by the selected date and include customer information
+                var bookingsForDate = db.Bookings
+                                        .Where(b => DbFunctions.TruncateTime(b.BookingDate) == selectedDate.Date)
+                                        .Include(b => b.Customer) // Include customer information
+                                        .ToList();
+
+                // Update ListBox with retrieved bookings
+                BookingsList.ItemsSource = bookingsForDate;
+
+                // Update capacity information
+                int totalCapacity = 40;
+                int bookedCount = bookingsForDate.Sum(b => b.NumberOfParticipants);
+                int availableSpace = totalCapacity - bookedCount;
+
+                // Update TextBlocks
+                CapacityTextBlock.Text = totalCapacity.ToString();
+                BookedCountTextBlock.Text = bookedCount.ToString();
+                AvailableCountTextBlock.Text = availableSpace.ToString();
+            }
+        }
+
+
+
+        private void BookingDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ReturnBookings();
         }
     }
 }
