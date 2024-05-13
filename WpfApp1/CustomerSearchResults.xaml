@@ -1,0 +1,21 @@
+﻿<Window x:Class="WpfApp1.CustomerSearchResults"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="CustomerSearchResults" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="CustomersListBox" ItemsSource="{Binding}" Margin="46,92,356,79"/>
+        <Button x:Name="CreateBookingButton" Content="Create Booking" HorizontalAlignment="Left" Margin="542,342,0,0" VerticalAlignment="Top" Height="54" Width="152" Click="CreateBookingButton_Click"/>
+        <Label x:Name="MatchingCustomersLabel" Content="Matching Customers" HorizontalAlignment="Left" Margin="46,52,0,0" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="CustomerNameTextBox" HorizontalAlignment="Left" Margin="500,132,0,0" TextWrapping="Wrap" Text="Customer Name" VerticalAlignment="Top" Width="236" />
+        <Label x:Name="CreateNewCustomerLabel" Content="Create New Customer" HorizontalAlignment="Left" Margin="478,52,0,0" VerticalAlignment="Top" Width="140"/>
+        <TextBox x:Name="CustomerContactNumberTextBox" HorizontalAlignment="Left" Margin="500,199,0,0" TextWrapping="Wrap" Text="Contact Number" VerticalAlignment="Top" Width="236"/>
+        <TextBlock x:Name="BookingDateTextBlock" HorizontalAlignment="Left" Margin="500,258,0,0" TextWrapping="Wrap" Text="Date of Booking: " VerticalAlignment="Top" Height="16" Width="97"/>
+        <TextBlock x:Name="NumberOfCustomersTextBlock" HorizontalAlignment="Left" Margin="500,279,0,0" TextWrapping="Wrap" Text="Number of Customers: " VerticalAlignment="Top" Height="16" Width="134"/>
+        <TextBlock x:Name="SampleBookingDateTextBlock" HorizontalAlignment="Left" Margin="618,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="97"><Run Language="en-gb" Text="19/04/2024"/></TextBlock>
+        <TextBlock x:Name="SampleNumberOfCustomersTextBlock" HorizontalAlignment="Left" Margin="639,279,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="16" Width="97"><Run Language="en-gb" Text="2"/></TextBlock>
+    </Grid>
+</Window>
