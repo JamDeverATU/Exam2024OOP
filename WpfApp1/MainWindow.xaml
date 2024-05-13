@@ -34,7 +34,7 @@
         <TextBlock x:Name="BookedCountTextBlock" HorizontalAlignment="Left" Margin="208,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="21" Height="25"><Run Language="en-gb" Text="10"/></TextBlock>
         <TextBlock x:Name="AvailableCountTextBlock" HorizontalAlignment="Left" Margin="324,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="21" Height="25"><Run Language="en-gb" Text="30"/></TextBlock>
 
-        <Button Content="Search Customer" HorizontalAlignment="Left" Margin="574,312,0,0" VerticalAlignment="Top" Width="161" Click="SearchCustomerButton1_Click"/>
+        <Button x:Name="CustomerSearchButton" Content="Customer Search" HorizontalAlignment="Left" VerticalAlignment="Top" Click="CustomerSearchButton_Click"/>
         <TextBox x:Name="CustomerCountTextBox" HorizontalAlignment="Left" Margin="534,127,0,0" TextWrapping="Wrap" Text="Number of Customers" VerticalAlignment="Top" Width="149"/>
         <TextBox x:Name="CustomerNameTextBox" HorizontalAlignment="Left" Margin="534,182,0,0" TextWrapping="Wrap" Text="Customer Name" VerticalAlignment="Top" Width="149"/>
         <TextBox x:Name="CustomerContactTextBox" HorizontalAlignment="Left" Margin="534,237,0,0" TextWrapping="Wrap" Text="Contact Number" VerticalAlignment="Top" Width="149"/>

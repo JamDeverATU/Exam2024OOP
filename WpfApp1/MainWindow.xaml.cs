@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Data.Entity; // Import Entity Framework namespace
+using System.Data.Entity;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Windows;
 using System.Windows.Controls;
-using WpfApp1;
 
 namespace WpfApp1
 {
     public partial class MainWindow : Window
     {
-        private object _context; // This seems to be an unused private field
 
         public MainWindow()
         {
@@ -56,7 +53,15 @@ namespace WpfApp1
         // Event handler for the Search Customer button click event
         private void SearchCustomerButton1_Click(object sender, RoutedEventArgs e)
         {
-            // This method is currently empty and seems to be intended for implementing customer search functionality
+            try
+            {
+                CustomerSearchResults newWindow = new CustomerSearchResults();
+                newWindow.Show();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

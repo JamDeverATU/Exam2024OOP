@@ -1,58 +1,54 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows;
-using System.Windows.Controls;
 
 namespace WpfApp1
 {
     public partial class CustomerSearchResults : Window
     {
-        private RestaurantData _context;
-        private Customer _selectedCustomer;
-        private object context;
-        private object matchingCustomers;
+        // Assuming you have a list of customers to bind to the ListBox
+        public List<Customer> Customers { get; set; }
 
-        public CustomerSearchResults(RestaurantData context)
+        public CustomerSearchResults(List<Customer> searchResults)
         {
             InitializeComponent();
-            _context = context;
-            CustomersListBox.ItemsSource = _context.Customers; // Assuming CustomersListBox is bound to a collection of Customer objects
+            Customers = searchResults;
+            DataContext = this;
         }
 
-        public CustomerSearchResults(object context, object matchingCustomers)
+        private void CreateBookingButton2_Click(object sender, RoutedEventArgs e)
         {
-            this.context = context;
-            this.matchingCustomers = matchingCustomers;
-        }
-
-        private void CreateBookingButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (_selectedCustomer == null)
+            if (CustomersListBox.SelectedItem == null)
             {
-                MessageBox.Show("Please select a customer from the search results.");
+                MessageBox.Show("Please select a customer.");
                 return;
             }
 
-            // Get booking details from UI or other sources
-            DateTime bookingDate = DateTime.Now; // Example
-            int numberOfCustomers = 2; // Example
+            // Get the selected customer from the ListBox
+            Customer selectedCustomer = CustomersListBox.SelectedItem as Customer;
 
+            // You may need to parse or convert the values from UI elements like TextBoxes
+            // For example:
+            DateTime bookingDate = DateTime.Parse(BookingDateTextBlock.Text);
+            int numberOfCustomers = int.Parse(NumberOfCustomersTextBlock.Text);
+
+            // Create a new booking with the selected customer and other details
             Booking newBooking = new Booking
             {
+                Customer = selectedCustomer,
                 BookingDate = bookingDate,
-                NumberOfParticipants = numberOfCustomers,
-                Customer = _selectedCustomer
+                NumberOfParticipants = numberOfCustomers
+                // You may need to populate other properties of the booking object
             };
 
-            _context.Bookings.Add(newBooking);
-            _context.SaveChanges();
+            // Assuming you have a method to save the booking
+            // SaveBooking(newBooking);
 
-            MessageBox.Show("Booking created successfully!");
+            // Show confirmation message
+            MessageBox.Show("Booking created successfully.");
+
+            // Close the window
             this.Close();
-        }
-
-        private void CustomersListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            _selectedCustomer = (Customer)CustomersListBox.SelectedItem;
         }
     }
 }

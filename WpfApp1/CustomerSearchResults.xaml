@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="CustomerSearchResults" Height="450" Width="800">
     <Grid>
-        <ListBox x:Name="CustomersListBox" ItemsSource="{Binding}" Margin="46,92,356,79"/>
-        <Button x:Name="CreateBookingButton" Content="Create Booking" HorizontalAlignment="Left" Margin="542,342,0,0" VerticalAlignment="Top" Height="54" Width="152" Click="CreateBookingButton_Click"/>
+        <ListBox x:Name="CustomersListBox" ItemsSource="{Binding Customers}" SelectionMode="Single"/>
+        <Button x:Name="CreateBookingButton2" Content="Create Booking" HorizontalAlignment="Left" Margin="536,349,0,0" VerticalAlignment="Top" Height="39" Width="152" Click="CreateBookingButton2_Click"/>
         <Label x:Name="MatchingCustomersLabel" Content="Matching Customers" HorizontalAlignment="Left" Margin="46,52,0,0" VerticalAlignment="Top" Width="140"/>
         <TextBox x:Name="CustomerNameTextBox" HorizontalAlignment="Left" Margin="500,132,0,0" TextWrapping="Wrap" Text="Customer Name" VerticalAlignment="Top" Width="236" />
         <Label x:Name="CreateNewCustomerLabel" Content="Create New Customer" HorizontalAlignment="Left" Margin="478,52,0,0" VerticalAlignment="Top" Width="140"/>
